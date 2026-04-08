@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+message Mensagem {
+  bytes payload = 1;
+}
+
+message Confirmacao {
+  int32 tamanho_recebido = 1;
+  string timestamp_servidor = 2;
+}
+
+service ExperimentoService {
+  rpc Enviar(Mensagem) returns (Confirmacao);
+}
