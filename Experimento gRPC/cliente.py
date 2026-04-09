@@ -18,7 +18,7 @@ def run_benchmark(host='localhost'):
             
             for tamanho in tamanhos:
                 print(f"Iniciando testes para {tamanho} bytes...")
-                payload = b'a' * tamanho #Cria a sequência de bytes
+                payload = b'a' * tamanho 
                 
                 for i in range(repeticoes):
                     msg = experimento_pb2.Mensagem(payload=payload)
@@ -34,4 +34,4 @@ def run_benchmark(host='localhost'):
     print("Benchmark concluído! Arquivo benchmark.log gerado.")
 
 if __name__ == '__main__':
-    run_benchmark('localhost') #Alterar para o IP do cluster
+    run_benchmark('localhost') 
