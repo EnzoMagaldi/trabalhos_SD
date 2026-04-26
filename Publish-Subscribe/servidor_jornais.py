@@ -8,13 +8,10 @@ from datetime import datetime
 class JornalServicer(jornais_pb2_grpc.JornalServiceServicer):
     def AssinarJornal(self, request, context):
         print(f"[Servidor] {request.nome_cliente} assinou o jornal: {request.topico}")
-        
-        # Simulação de um loop que envia notícias quando elas "acontecem"
         noticias_enviadas = 0
         try:
             while context.is_active():
-                # Aqui você integraria com um banco de dados ou fila real
-                # Por enquanto, vamos simular o envio de uma notícia a cada 5 segundos
+                # ainda tem que adicionar uma lógica extra
                 time.sleep(5)
                 
                 noticia = jornais_pb2.Noticia(

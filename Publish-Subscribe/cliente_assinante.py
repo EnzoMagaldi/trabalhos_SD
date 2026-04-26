@@ -18,6 +18,5 @@ def assinar(nome, topico):
             print(f"Erro na conexão: {e}")
 
 if __name__ == '__main__':
-    # Você pode rodar vários clientes em terminais diferentes com tópicos diferentes
     meu_topico = input("Qual jornal deseja assinar? ")
     assinar("Usuario_Teste", meu_topico)
