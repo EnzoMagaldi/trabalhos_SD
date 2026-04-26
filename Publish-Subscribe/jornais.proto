@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+message AssinaturaRequest {
+  string nome_cliente = 1;
+  string topico = 2; // Ex: "Globo Urbano", "G2", etc.
+}
+
+message Noticia {
+  string jornal = 1;
+  string titulo = 2;
+  string conteudo = 3;
+  string timestamp = 4;
+}
+
+service JornalService {
+  // O 'stream' indica que o servidor enviará múltiplas mensagens
+  rpc AssinarJornal(AssinaturaRequest) returns (stream Noticia);
+}
