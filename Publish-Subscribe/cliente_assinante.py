@@ -13,7 +13,7 @@ def assinar(nome, topico):
             for noticia in stub.AssinarJornal(request):
                 print(f"\n[{noticia.timestamp}] NOVO ARTIGO NO {noticia.jornal}")
                 print(f"Título: {noticia.titulo}")
-                print(f"Resumo: {noticia.conteudo}")
+                print(f"Conteúdo: {noticia.conteudo}")
         except grpc.RpcError as e:
             print(f"Erro na conexão: {e}")
 

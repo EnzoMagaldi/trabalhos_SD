@@ -12,6 +12,19 @@ message Noticia {
   string timestamp = 4;
 }
 
+message PublicarRequest {
+  string topico = 1;
+  string titulo = 2;
+  string conteudo = 3;
+}
+
+message PublicarResponse {
+  bool sucesso = 1;
+  string mensagem = 2;
+}
+
 service JornalService {
   rpc AssinarJornal(AssinaturaRequest) returns (stream Noticia);
+  
+  rpc PublicarNoticia(PublicarRequest) returns (PublicarResponse);
 }

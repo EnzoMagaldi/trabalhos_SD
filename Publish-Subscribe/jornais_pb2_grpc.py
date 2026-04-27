@@ -39,14 +39,24 @@ class JornalServiceStub(object):
                 request_serializer=jornais__pb2.AssinaturaRequest.SerializeToString,
                 response_deserializer=jornais__pb2.Noticia.FromString,
                 _registered_method=True)
+        self.PublicarNoticia = channel.unary_unary(
+                '/JornalService/PublicarNoticia',
+                request_serializer=jornais__pb2.PublicarRequest.SerializeToString,
+                response_deserializer=jornais__pb2.PublicarResponse.FromString,
+                _registered_method=True)
 
 
 class JornalServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def AssinarJornal(self, request, context):
-        """O 'stream' indica que o servidor enviará múltiplas mensagens
-        """
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def PublicarNoticia(self, request, context):
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -58,6 +68,11 @@ def add_JornalServiceServicer_to_server(servicer, server):
                     servicer.AssinarJornal,
                     request_deserializer=jornais__pb2.AssinaturaRequest.FromString,
                     response_serializer=jornais__pb2.Noticia.SerializeToString,
+            ),
+            'PublicarNoticia': grpc.unary_unary_rpc_method_handler(
+                    servicer.PublicarNoticia,
+                    request_deserializer=jornais__pb2.PublicarRequest.FromString,
+                    response_serializer=jornais__pb2.PublicarResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -87,6 +102,33 @@ class JornalService(object):
             '/JornalService/AssinarJornal',
             jornais__pb2.AssinaturaRequest.SerializeToString,
             jornais__pb2.Noticia.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def PublicarNoticia(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/JornalService/PublicarNoticia',
+            jornais__pb2.PublicarRequest.SerializeToString,
+            jornais__pb2.PublicarResponse.FromString,
             options,
             channel_credentials,
             insecure,
